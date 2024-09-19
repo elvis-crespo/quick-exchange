@@ -6,6 +6,7 @@ import { ContactUs } from './Pages/ContactUs';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Landing } from './Pages/Landing';
 import { NotFound } from './Pages/NotFound';
+import { Login } from './Pages/Login';
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/history" element={<History />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route element={<ProtectedRoute isAllowed={true}/>} >
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute isAllowed={true} />}>
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -167,7 +168,7 @@ export const NavBar = ({ menuItems, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <ThemeProvider theme={theme === "dark" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <Container>
         <nav>
           <div className="logo">

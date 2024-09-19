@@ -2,13 +2,23 @@ import styled from "styled-components";
 import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer";
 
+// const handleScroll = (id) => {
+//   const element = document.getElementById(id);
+//   const yOffset = -80; 
+//   const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+//   window.scrollTo({ top: y, behavior: "smooth" });
+// };
+
+
 const Container = styled.div`
   position: relative;
-  padding: 0;
-  // background-color: #e9e5ef;
-  background-color: #1b2736;
+  padding: 25px 75px;
+  background-color: #e9e5ef; //Dark mode
+  // background-color: #1b2736; //Light mode
   width: 100%;
   min-height: calc(100vh - 60px);
+  scroll-margin-top: 60px;
 `;
 
 export const Landing = () => {
@@ -18,7 +28,7 @@ export const Landing = () => {
   ];
   return (
     <>
-      <NavBar menuItems={menuItems} theme="light"></NavBar>
+      <NavBar menuItems={menuItems} theme="ligth"></NavBar>
 
       <Container id="history">
         <h1>History</h1>
