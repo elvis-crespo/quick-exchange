@@ -14,8 +14,10 @@ import { Footer } from "../components/Footer";
 const Container = styled.div`
   position: relative;
   padding: 25px 75px;
-  background-color: #e9e5ef; //Dark mode
+  // background-color: #e9e5ef; //Dark mode
+  background-color: ${({ theme }) => theme.navBackground};
   // background-color: #1b2736; //Light mode
+  color: ${({ theme }) => theme.text};
   width: 100%;
   min-height: calc(100vh - 60px);
   scroll-margin-top: 60px;

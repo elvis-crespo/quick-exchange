@@ -1,19 +1,30 @@
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  background-color: #1b2736;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  //   position: fixed;
+  // border-top: 1px solid #d2d2d2;
+  background-color: ${({ theme }) => theme.navBackground};
+  color: ${({ theme }) => theme.text};
   width: 100%;
-  bottom: 0;
+  padding: 0 32px;
+  nav {
+    border-top: 1px solid #d2d2d2;
+    padding: 2rem;
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    p {
+      text-align: center;
+    }
+  }
 `;
 export const Footer = () => {
   return (
     <>
       <FooterContainer>
+        <nav>
         <p>&copy; 2024 Swapify. Todos los derechos reservados.</p>
+        </nav>
       </FooterContainer>
     </>
   );
