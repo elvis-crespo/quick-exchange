@@ -15,3 +15,7 @@ export const darkTheme = {
   buttonBackground: "#495057",
   buttonTextColor: "#000",
 };
+
+export const themeTypography = {
+  fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+};

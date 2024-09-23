@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themeTypography } from "../utils/themes";
 
 const FooterContainer = styled.footer`
   // border-top: 1px solid #d2d2d2;
@@ -15,6 +16,7 @@ const FooterContainer = styled.footer`
     margin: 0 auto;
     p {
       text-align: center;
+      font-family: ${themeTypography.fontFamily};
     }
   }
 `;
