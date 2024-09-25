@@ -162,6 +162,7 @@ export const NavBar = ({ menuItems }) => {
     e.preventDefault();
     navigate("/login");
   };
+
   const theme = useSelector((state) => state.theme);
   return (
     <Container>

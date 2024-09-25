@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 const StyledForm = styled.form`
   display: flex;
@@ -137,126 +138,21 @@ const StyledForm = styled.form`
   }
 `;
 
-// const StyledForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
-//   background-color: #ffffff;
-//   padding: 30px;
-//   width: 450px;
-//   border-radius: 20px;
-//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-//     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-//   //   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
-//   //     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-//   box-shadow: 0 0 0 2px rgb(190, 190, 190), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-
-//   ::placeholder {
-//     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-//       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-//   }
-
-//   .flex-column > label {
-//     color: #151717;
-//     font-weight: 600;
-//   }
-
-//   .inputForm {
-//     border: 1.5px solid #ecedec;
-//     border-radius: 10px;
-//     height: 50px;
-//     display: flex;
-//     align-items: center;
-//     padding-left: 10px;
-//     transition: 0.2s ease-in-out;
-//   }
-
-//   .input {
-//     margin-left: 10px;
-//     border-radius: 10px;
-//     border: none;
-//     width: 100%;
-//     height: 100%;
-//   }
-
-//   .input:focus {
-//     outline: none;
-//   }
-
-//   .inputForm:focus-within {
-//     border: 1.5px solid #2d79f3;
-//   }
-
-//   .flex-row {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     gap: 10px;
-//     justify-content: space-between;
-//   }
-
-//   .flex-row > div > label {
-//     font-size: 14px;
-//     color: black;
-//     font-weight: 400;
-//     padding-left: 5px;
-//   }
-
-//   .span {
-//     font-size: 14px;
-//     margin-left: 5px;
-//     color: #2d79f3;
-//     font-weight: 500;
-//     cursor: pointer;
-//   }
-
-//   .button-submit {
-//     margin: 20px 0 10px 0;
-//     background-color: #151717;
-//     border: none;
-//     color: white;
-//     font-size: 15px;
-//     font-weight: 500;
-//     border-radius: 10px;
-//     height: 50px;
-//     width: 100%;
-//     cursor: pointer;
-//   }
-
-//   .p {
-//     text-align: center;
-//     color: black;
-//     font-size: 14px;
-//     margin: 5px 0;
-//   }
-
-//   .btn {
-//     margin-top: 10px;
-//     width: 100%;
-//     height: 50px;
-//     border-radius: 10px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     font-weight: 500;
-//     gap: 10px;
-//     border: 1px solid #ededef;
-//     background-color: white;
-//     cursor: pointer;
-//     transition: 0.2s ease-in-out;
-
-//     svg {
-//       width: 20px;
-//       height: 20px;
-//     }
-//   }
-
-//   .btn:hover {
-//     border: 1px solid #2d79f3;
-//   }
-// `;
-
 export const Login = () => {
+  
+  const handleLoginGoogle = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7275/api/Auth/google-login"
+      );
+      console.log(response);
+      //url redirect
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error("Error when signing in with Google:", error);
+    }
+  };
+
   return (
     <>
       <StyledForm>
@@ -274,7 +170,12 @@ export const Login = () => {
               <path d="M30.853 13.87A15 15 0 10 1.124 17.95a15.1 15.1 0 0012.876 12.918 15.6 15.6 0 002.016.13 14.85 14.85 0 007.715-2.145 1 1 0 10-1.031-1.711 13.007 13.007 0 115.458-6.529 2.149 2.149 0 01-4.158-.759V4.938a1 1 0 00-2 0v1.726a8 8 0 10.2 10.325 4.135 4.135 0 007.83.274 15.2 15.2 0 00.823-7.455zM16 21a6 6 0 116-6 6.006 6.006 0 01-6 6z" />
             </g>
           </svg>
-          <input placeholder="Enter your Email" className="input" type="text" />
+          <input
+            placeholder="Enter your Email"
+            className="input"
+            type="text"
+            autoComplete="current-email"
+          />
         </div>
 
         <div className="flex-column">
@@ -294,6 +195,7 @@ export const Login = () => {
             placeholder="Enter your Password"
             className="input"
             type="password"
+            autoComplete="current-password"
           />
         </div>
 
@@ -313,11 +215,11 @@ export const Login = () => {
         <p className="p line">Or With</p>
 
         <div className="flex-row">
-          <button className="btn google">
+          <button className="btn google" onClick={handleLoginGoogle}>
             <FcGoogle height={20} width={20} className="icon-google" />
             Google
           </button>
-          <button className="btn apple">
+          <button className="btn apple" onClick={handleLoginGoogle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
