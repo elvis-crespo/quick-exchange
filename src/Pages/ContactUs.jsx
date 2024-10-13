@@ -1,5 +1,5 @@
 
-export const ContactUs = () => {
+export default function ContactUs() {
   return (
     <div>ContactUs</div>
   )

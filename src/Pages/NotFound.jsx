@@ -10,7 +10,7 @@ const Img = styled.img`
 
 
 
-export const NotFound = () => {
+export default function NotFound() {
   return (
     <>
         <Img src="src/assets/Designer.jpeg" alt="not-found" />

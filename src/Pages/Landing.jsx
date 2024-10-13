@@ -60,7 +60,7 @@ const Container = styled.div`
   }
 `;
 
-export const Landing = () => {
+export default function Landing() {
   const menuItems = [
     { path: "#history", label: "History" },
     { path: "#contact-us", label: "Contact Us" },

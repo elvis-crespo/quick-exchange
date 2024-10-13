@@ -138,7 +138,7 @@ const StyledForm = styled.form`
   }
 `;
 
-export const Login = () => {
+export default function Login() {
   
   const handleLoginGoogle = async () => {
     try {
