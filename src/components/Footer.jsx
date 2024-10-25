@@ -8,7 +8,7 @@ const FooterContainer = styled.footer`
   width: 100%;
   padding: 0 32px;
   nav {
-    border-top: 1px solid #d2d2d2;
+    // border-top: 1px solid #d2d2d2;
     padding: 2rem;
     width: 100%;
     height: 60px;

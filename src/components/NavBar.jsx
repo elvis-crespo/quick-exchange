@@ -17,7 +17,7 @@ const Container = styled.div`
   width: 100%;
   nav {
     background-color: ${({ theme }) => theme.navBackground};
-    border-bottom: 1px solid #d2d2d2;
+    // border-bottom: 1px solid #d2d2d2;
     width: 100%;
     height: 60px;
     max-width: 1200px;

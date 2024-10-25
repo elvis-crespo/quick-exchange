@@ -4,6 +4,9 @@
   margin: 0%;
   outline: 0;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  /* scrollbar-color: #ff7d12 #222222; */
+  scrollbar-color: #edeeef #222222;
 }
 
 h1, h2, h3, h4 {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer";
 import { themeTypography } from "../utils/themes";
+import ContactForm from "../components/Contact";
 
 // const handleScroll = (id) => {
 //   const element = document.getElementById(id);
@@ -16,7 +17,8 @@ const Container = styled.div`
   display: flex;
   position: relative;
   padding: 25px 0px;
-  background-color: ${({ theme }) => theme.navBackground};
+  background-color: ${({ theme }) => theme.background};
+  // background-color: #293c51;
   color: ${({ theme }) => theme.text};
   width: 100%;
   min-height: calc(100vh - 60px);
@@ -71,7 +73,37 @@ export default function Landing() {
 
       <Container id="history">
         <div>
-          <h1>HISTORY</h1>
+          <h1>¿Qué es Swapify?</h1>
+          <p>
+            Swapify es una plataforma innovadora que permite a los usuarios
+            intercambiar, transferir y gestionar activos digitales de manera
+            rápida y segura. Nuestra misión es simplificar las transacciones
+            digitales, ofreciendo una solución accesible y confiable para
+            individuos y empresas.
+          </p>
+        </div>
+        <div>
+          <img src="src/assets/test.png" alt="" />
+        </div>
+      </Container>
+      <Container id="history">
+        <div>
+          {/* <h1>Nuestra Historia</h1>
+          <p>
+            Swapify comenzó con la visión de transformar la forma en que las
+            personas realizan transacciones digitales. Desde nuestros humildes
+            inicios en 2024, hemos crecido hasta convertirnos en una plataforma
+            confiable para miles de usuarios. Nuestro compromiso ha sido siempre
+            garantizar transacciones rápidas, seguras y eficientes,
+            proporcionando soluciones innovadoras a nuestros clientes.
+          </p> */}
+          <h1>¿Cómo funciona?</h1>
+          <p>
+            Con Swapify, puedes realizar intercambios de activos digitales en
+            solo unos pocos clics. Gracias a nuestra tecnología avanzada y una
+            interfaz fácil de usar, puedes transferir fondos, realizar pagos o
+            cambiar monedas digitales de manera instantánea, sin complicaciones.
+          </p>
         </div>
         <div>
           <img src="src/assets/test.png" alt="" />
@@ -79,14 +111,18 @@ export default function Landing() {
       </Container>
       <Container id="contact-us">
         <div className="flex-column">
-          <h1>CONTACT US</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit animi amet numquam minus? Nulla impedit voluptate corporis vero architecto obcaecati ullam dolore laboriosam explicabo ut possimus, inventore dignissimos ex autem.</p>
+          <h1>¿Tienes preguntas? ¡Contáctanos!</h1>
+          <p>
+            Nuestro equipo está aquí para ayudarte. No dudes en comunicarte con
+            nosotros si tienes alguna consulta o necesitas asistencia. Estamos
+            disponibles las 24 horas del día, los 7 días de la semana.
+          </p>
+          <ContactForm />
         </div>
-        <div>
+        {/* <div>
           <img src="src/assets/test.png" alt="" />
-        </div>
+        </div> */}
       </Container>
-
       <Footer />
     </>
   );

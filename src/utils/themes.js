@@ -1,15 +1,19 @@
 export const lightTheme = {
   // background: "#f8f9fa",
-  background: "#edeeef",
+  navBackground: "#edeeef",
+  background: "#f7f8f8",
+  //first
+  // background: "#edeeef",
+  // navBackground: "#e9e5ef",
   text: "#000",
-  navBackground: "#e9e5ef",
   buttonBackground: "#f4f7fb",
   buttonTextColor: "#000",
 };
 
 export const darkTheme = {
   // buttonBackground: "#96e095",
-  background: "#495057",
+  background: "#293c51",
+  // background: "#495057",
   text: "#fff",
   navBackground: "#1b2736",
   buttonBackground: "#495057",
