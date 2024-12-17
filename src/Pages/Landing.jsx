@@ -66,6 +66,7 @@ export default function Landing() {
   const menuItems = [
     { path: "#history", label: "History" },
     { path: "#contact-us", label: "Contact Us" },
+    { path: "#", label: "FAQs" },
   ];
   return (
     <>
@@ -119,9 +120,6 @@ export default function Landing() {
           </p>
           <ContactForm />
         </div>
-        {/* <div>
-          <img src="src/assets/test.png" alt="" />
-        </div> */}
       </Container>
       <Footer />
     </>

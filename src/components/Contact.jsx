@@ -64,10 +64,10 @@ const FormSubmitButton = styled.button`
   align-items: center;
   justify-content: center;
   font-family: inherit;
-  color: #000;
+  color: ${({ theme }) => theme.text};
   font-weight: line;
   width: 40%;
-  background: #bba213;
+  background: #eab308;
   border: 1px solid #414141;
   padding: 12px 16px;
   font-size: inherit;
@@ -77,11 +77,11 @@ const FormSubmitButton = styled.button`
   border-radius: 6px;
   &:hover {
     background-color: #fff;
-    border-color: #fff;
     scale: 1.05;
+    color: #000;
+    transition: all 0.3s ease-in-out;
   }
   &:active {
-    // transform: scale(0.95);
     scale: 0.95;
   }
 `;

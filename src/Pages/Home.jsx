@@ -55,6 +55,7 @@ export default function Home() {
   const menuItems = [
     { path: "#history", label: "History" },
     { path: "#contact-us", label: "Contact Us" },
+    { path: "#", label: "FAQs" },
   ];
   return (
     <>

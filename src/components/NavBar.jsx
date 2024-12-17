@@ -50,6 +50,7 @@ const Container = styled.div`
       li {
         list-style: none;
         display: block;
+        z-index: 100;
         @media (max-width: 920px) {
           display: none;
         }
@@ -58,12 +59,8 @@ const Container = styled.div`
           color: ${({ theme }) => theme.text};
           font-size: 16px;
           padding: 0px 17px;
-          transition: letter-spacing 0.3s ease;
+          // transition: letter-spacing 0.3s ease;
           font-family: ${themeTypography.fontFamily};
-          &:hover {
-            // color: #1b2736;
-            letter-spacing: 1px;
-          }
         }
       }
 
@@ -71,6 +68,20 @@ const Container = styled.div`
         display: none;
       }
     }
+    .menu-backdrop {
+      position: absolute;
+      background-color: #eab308;
+      backdrop-filter: blur(10px);
+      border-radius: 4px;
+      transform: translate(var(--left), var(--top));
+      left: 0;
+      top: 0;
+      width: var(--width);
+      height: var(--height);
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+    }
+
     a.action_btn {
       margin-right: 5px;
       text-decoration: none;
@@ -86,7 +97,7 @@ const Container = styled.div`
       font-family: ${themeTypography.fontFamily};
       &:hover {
         scale: 1.05;
-        color: white;
+        // color: white;
       }
 
       &active {
@@ -163,6 +174,29 @@ export const NavBar = ({ menuItems }) => {
     navigate("/login");
   };
 
+  const listItem = document.querySelectorAll("li");
+  const menuBackdrop = document.querySelector("#menu-backdrop");
+
+  listItem.forEach((item) => {
+    
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+      menuBackdrop.style.setProperty("--left", `${left}px`);
+      menuBackdrop.style.setProperty("--top", `${top}px`);
+      menuBackdrop.style.setProperty("--width", `${width}px`);
+      menuBackdrop.style.setProperty("--height", `${height}px`);
+
+      menuBackdrop.style.opacity = 1;
+      menuBackdrop.style.visibility = "visible";
+    });
+
+    item.addEventListener("mouseleave", () => {
+      menuBackdrop.style.opacity = 0;
+      menuBackdrop.style.visibility = "hidden";
+    });
+
+  });
+
   const theme = useSelector((state) => state.theme);
   return (
     <Container>
@@ -178,26 +212,26 @@ export const NavBar = ({ menuItems }) => {
               height="100"
               preserveAspectRatio="xMidYMid meet"
               version="1.0"
-            >
+              >
               <defs>
                 <g />
                 <clipPath id="79ef7b26c4">
                   <path
                     d="M 0 0.0390625 L 224.761719 0.0390625 L 224.761719 149.960938 L 0 149.960938 Z M 0 0.0390625 "
                     clipRule="nonzero"
-                  />
+                    />
                 </clipPath>
                 <clipPath id="3d1c87dbd5">
                   <path
                     d="M 62.082031 46.199219 L 223.53125 46.199219 L 223.53125 104.496094 L 62.082031 104.496094 Z M 62.082031 46.199219 "
                     clipRule="nonzero"
-                  />
+                    />
                 </clipPath>
                 <clipPath id="975f0e34cf">
                   <path
                     d="M 96.925781 46.199219 L 221.101562 46.199219 C 221.890625 46.199219 222.617188 46.617188 223.015625 47.296875 C 223.417969 47.972656 223.425781 48.8125 223.042969 49.5 L 194.285156 101.191406 C 193.152344 103.230469 191.003906 104.496094 188.671875 104.496094 L 64.492188 104.496094 C 63.707031 104.496094 62.976562 104.078125 62.578125 103.398438 C 62.179688 102.71875 62.171875 101.878906 62.554688 101.191406 L 91.308594 49.5 C 92.445312 47.464844 94.59375 46.199219 96.925781 46.199219 Z M 96.925781 46.199219 "
                     clipRule="nonzero"
-                  />
+                    />
                 </clipPath>
               </defs>
               <g clipPath="url(#3d1c87dbd5)">
@@ -207,7 +241,7 @@ export const NavBar = ({ menuItems }) => {
                     d="M 60.714844 46.199219 L 224.898438 46.199219 L 224.898438 104.496094 L 60.714844 104.496094 Z M 60.714844 46.199219 "
                     fillOpacity="1"
                     fillRule="nonzero"
-                  />
+                    />
                 </g>
               </g>
               <g fill="#000000" className="black" fillOpacity="1">
@@ -272,10 +306,12 @@ export const NavBar = ({ menuItems }) => {
           ))}
         </ul>
 
+        <div id="menu-backdrop" className="menu-backdrop"></div>
+
         <DarkModeToggle
           isDarkMode={theme === "dark" ? true : false}
           onToggle={() => dispatch(toggleTheme())}
-        />
+          />
 
         <a className="action_btn" onClick={handleClickLogin}>
           Login
@@ -291,20 +327,20 @@ export const NavBar = ({ menuItems }) => {
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
-          >
+            >
             <path
               className="path_selector"
               d={
                 isOpen
-                  ? "M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
-                  : "M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"
+                ? "M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
+                : "M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"
               }
-            ></path>
+              ></path>
           </svg>
         </ToggleBtn>
       </nav>
 
-      <DropDownMenu dataisopen={isOpen}>
+      <DropDownMenu dataisopen={isOpen }>
         <li>
           <NavLink to="/home">Home</NavLink>
         </li>
