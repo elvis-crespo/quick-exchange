@@ -13,7 +13,7 @@ const Img = styled.img`
 export default function NotFound() {
   return (
     <>
-        <Img src="src/assets/Designer.jpeg" alt="not-found" />
+        <Img src="src/assets/images/Designer.jpeg" alt="not-found" />
         <NavLink to="/home">Go Home 🏠</NavLink>
     </>
   )

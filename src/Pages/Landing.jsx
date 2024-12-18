@@ -3,6 +3,7 @@ import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer";
 import { themeTypography } from "../utils/themes";
 import ContactForm from "../components/Contact";
+import { useState } from "react";
 
 // const handleScroll = (id) => {
 //   const element = document.getElementById(id);
@@ -18,7 +19,6 @@ const Container = styled.div`
   position: relative;
   padding: 25px 0px;
   background-color: ${({ theme }) => theme.background};
-  // background-color: #293c51;
   color: ${({ theme }) => theme.text};
   width: 100%;
   min-height: calc(100vh - 60px);
@@ -30,7 +30,9 @@ const Container = styled.div`
   @media (max-width: 570px) {
     flex-direction: column;
   }
-
+  .flex-column {
+    width: 100%;
+  }
   div {
     display: flex;
     justify-content: center;
@@ -60,19 +62,61 @@ const Container = styled.div`
       }
     }
   }
+  .tabs {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 24px 0px;
+  }
+  .tab-link {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  .tab-link.active {
+    background-color: #eab308;
+  }
+  .tab-content {
+    min-width: 80vw;
+    // display: none;
+    background-color: ${({ theme }) => theme.navBackground};
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    // display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .faqs-text {
+    font-family: ${themeTypography.fontFamily};
+    padding: 0;
+  }
 `;
 
 export default function Landing() {
+  
   const menuItems = [
+    { path: "#home", label: "Home" },
     { path: "#history", label: "History" },
     { path: "#contact-us", label: "Contact Us" },
-    { path: "#", label: "FAQs" },
+    { path: "#faqs", label: "FAQs" },
   ];
+
+  const [activeTab, setActiveTab] = useState('tab1');
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <>
       <NavBar menuItems={menuItems} theme="ligth"></NavBar>
 
-      <Container id="history">
+      <Container id="home">
         <div>
           <h1>¿Qué es Swapify?</h1>
           <p>
@@ -84,12 +128,12 @@ export default function Landing() {
           </p>
         </div>
         <div>
-          <img src="src/assets/test.png" alt="" />
+          <img src="src/assets/images/test.png" alt="" />
         </div>
       </Container>
       <Container id="history">
         <div>
-          {/* <h1>Nuestra Historia</h1>
+          <h1>Nuestra Historia</h1>
           <p>
             Swapify comenzó con la visión de transformar la forma en que las
             personas realizan transacciones digitales. Desde nuestros humildes
@@ -97,17 +141,17 @@ export default function Landing() {
             confiable para miles de usuarios. Nuestro compromiso ha sido siempre
             garantizar transacciones rápidas, seguras y eficientes,
             proporcionando soluciones innovadoras a nuestros clientes.
-          </p> */}
-          <h1>¿Cómo funciona?</h1>
+          </p>
+          {/* <h1>¿Cómo funciona?</h1>
           <p>
             Con Swapify, puedes realizar intercambios de activos digitales en
             solo unos pocos clics. Gracias a nuestra tecnología avanzada y una
             interfaz fácil de usar, puedes transferir fondos, realizar pagos o
             cambiar monedas digitales de manera instantánea, sin complicaciones.
-          </p>
+          </p> */}
         </div>
         <div>
-          <img src="src/assets/test.png" alt="" />
+          <img src="src/assets/images/test.png" alt="" />
         </div>
       </Container>
       <Container id="contact-us">
@@ -119,6 +163,59 @@ export default function Landing() {
             disponibles las 24 horas del día, los 7 días de la semana.
           </p>
           <ContactForm />
+        </div>
+      </Container>
+      <Container id="faqs">
+        <div className="flex-column">
+          <h1>Preguntas Frecuentes</h1>
+          <div className="tabs">
+            <button
+              className={`tab-link ${activeTab === "tab1" ? "active" : ""}`}
+              onClick={() => handleTabClick("tab1")}
+            >
+              General
+            </button>
+            <button
+              className={`tab-link ${activeTab === "tab2" ? "active" : ""}`}
+              onClick={() => handleTabClick("tab2")}
+            >
+              Seguridad
+            </button>
+            <button
+              className={`tab-link ${activeTab === "tab3" ? "active" : ""}`}
+              onClick={() => handleTabClick("tab3")}
+            >
+              Transacciones
+            </button>
+          </div>
+
+          <div className="tab-content">
+            {activeTab === "tab1" && (
+              <div id="tab1">
+                <p className="faqs-text">
+                  <strong>&#191;Qué es Swapify?</strong>
+                  <br></br>Swapify es una plataforma innovadora para activos
+                  digitales.
+                </p>
+              </div>
+            )}
+            {activeTab === "tab2" && (
+              <div id="tab2">
+                <p className="faqs-text">
+                  <strong>&#191;Es seguro utilizar Swapify?</strong>
+                  <br></br>Sí, Swapify utiliza tecnología de cifrado avanzada.
+                </p>
+              </div>
+            )}
+            {activeTab === "tab3" && (
+              <div id="tab3">
+                <p className="faqs-text">
+                  <strong>&#191;Cuánto tiempo tarda una transacción?</strong>
+                  <br></br>Las transacciones suelen completarse en minutos.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </Container>
       <Footer />
