@@ -15,6 +15,8 @@ const Container = styled.div`
   padding: 0 32px;
   background-color: ${({ theme }) => theme.navBackground};
   width: 100%;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   nav {
     background-color: ${({ theme }) => theme.navBackground};
     // border-bottom: 1px solid #d2d2d2;
@@ -79,10 +81,14 @@ const Container = styled.div`
       height: var(--height);
       transition: all 0.3s ease-in-out;
       opacity: 0;
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
       // z-index: 999;
     }
 
     a.action_btn {
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
       margin-right: 5px;
       text-decoration: none;
       background-color: ${({ theme }) => theme.buttonBackground};
@@ -95,8 +101,9 @@ const Container = styled.div`
       cursor: pointer;
       transition: scale 0.2 ease;
       font-family: ${themeTypography.fontFamily};
+
       &:hover {
-        scale: 1.05;
+        scale: 1.05; 
         // color: white;
       }
 
