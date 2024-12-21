@@ -141,30 +141,38 @@ export default function Landing() {
         </div>
       </Container>
 
-      <div id="faqs" style={{ display: "flex", flexDirection: "column", minWidth: "80vw", }}>
-        <h1>Preguntas Frecuentes</h1>
-        <Tabs
-          tabs={tabsItems}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-
-        <TabContent id="tab1" activeTab={activeTab}>
-          <strong>&#191;Qué es Swapify?</strong>
-          <br></br>Swapify es una plataforma innovadora para activos digitales.
-        </TabContent>
-
-        <TabContent id="tab2" activeTab={activeTab}>
-          <strong>&#191;Es seguro utilizar Swapify?</strong>
-          <br></br>Sí, Swapify utiliza tecnología de cifrado avanzada.
-        </TabContent>
-        
-        <TabContent id="tab3" activeTab={activeTab}>
-          <strong>&#191;Cuánto tiempo tarda una transacción?</strong>
-          <br></br>Las transacciones suelen completarse en minutos.
-        </TabContent>
-    
-      </div>
+      <Container id="faqs">
+        <div className="flex-column">
+          <h1>Preguntas Frecuentes</h1>
+          {/* <Tabs tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} /> */}
+          <Tabs 
+            tabs={tabsItems}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <TabContent id="tab1" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>¿Qué es Swapify?</strong>
+              <br />
+              Swapify es una plataforma innovadora para activos digitales.
+            </p>
+          </TabContent>
+          <TabContent id="tab2" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>¿Es seguro utilizar Swapify?</strong>
+              <br />
+              Sí, Swapify utiliza tecnología de cifrado avanzada.
+            </p>
+          </TabContent>
+          <TabContent id="tab3" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>¿Cuánto tiempo tarda una transacción?</strong>
+              <br />
+              Las transacciones suelen completarse en minutos.
+            </p>
+          </TabContent>
+        </div>
+      </Container>
 
       <Footer />
     </>

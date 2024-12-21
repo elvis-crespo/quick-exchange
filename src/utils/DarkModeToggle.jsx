@@ -46,6 +46,7 @@ const ToggleSwitch = styled(Input)`
 `;
 
 const DarkModeToggle = ({ isDarkMode, onToggle }) => {
+
   return (
     <>
       <Toggle htmlFor="switch">

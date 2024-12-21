@@ -15,12 +15,13 @@ const ContactUs = React.lazy(() => import("./Pages/ContactUs"));
 const Login = React.lazy(() => import("./Pages/Login"));
 
 function App() {
-  const theme = useSelector((state) => state.theme);
+  // const themes = useSelector((state) => state.theme); // dark or light object
+  const theme = useSelector((state) => state.theme.theme); // dark or light string
 
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading... ❤️</div>}>
           <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Landing />} />

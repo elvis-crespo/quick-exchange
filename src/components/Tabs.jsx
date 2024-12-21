@@ -2,11 +2,7 @@
 import styled from "styled-components";
 
 const TabsContainer = styled.div`
-  min-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  flex-direction: row !important;
   margin: 24px 0px;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};

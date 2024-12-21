@@ -4,16 +4,15 @@ import { themeTypography } from "../utils/themes";
 
 const TabContentContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.text};
-  min-width: 80vw;
-  // display: none;
   background-color: ${({ theme }) => theme.navBackground};
-  padding: 2rem 1.5rem;
   border-radius: 10px;
-  align-items: flex-start;
-  gap: 1rem;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  color: ${({ theme }) => theme.text};
+  display: ${({ hidden }) => (hidden ? "none" : "block")} !important;
+  min-width: 80vw !important;
+  padding: 2rem 1.5rem;
+  gap: 1rem;
 
   .faqs-text {
     font-family: ${themeTypography.fontFamily};
