@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
+
 import styled from "styled-components";
+
 
 const TabsContainer = styled.div`
   flex-direction: row !important;
   margin: 24px 0px;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
-`;
+ `;
 
 const TabLink = styled.button`
   padding: 0.5rem 1rem;

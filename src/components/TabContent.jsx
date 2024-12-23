@@ -28,7 +28,7 @@ export const TabContent = ({ id, activeTab, children}) => {
       aria-labelledby={`tab-${id}`}
       hidden={activeTab !== id}
     >
-      <p className="faqs-text">{children}</p>
+      {children}
     </TabContentContainer>
   );
 }

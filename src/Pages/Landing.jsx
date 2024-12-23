@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import { themeTypography } from "../utils/themes";
@@ -6,6 +6,7 @@ import ContactForm from "../components/Contact";
 import { useState } from "react";
 import { Tabs } from "../components/Tabs";
 import { TabContent } from "../components/TabContent";
+import { useTranslation } from "react-i18next";
 
 // const handleScroll = (id) => {
 //   const element = document.getElementById(id);
@@ -14,6 +15,22 @@ import { TabContent } from "../components/TabContent";
 
 //   window.scrollTo({ top: y, behavior: "smooth" });
 // };
+
+const Appear = keyframes`{
+    from {
+      opacity: 0;
+      /* scale: 0.5; */
+      /* transform: translateX(-100px); */
+      clip-path: inset(100% 100% 0 0);
+    }
+    to {
+      opacity: 1;
+      /* scale: 1; */
+      /* transform: translateX(0); */
+      clip-path: inset(0 0 0 0);
+    }
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -24,6 +41,9 @@ const Container = styled.div`
   width: 100%;
   min-height: calc(100vh - 60px);
   scroll-margin-top: 60px;
+  animation: ${Appear} 5s linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0 cover 40%;
   @media (max-width: 920px) {
     flex-direction: column;
   }
@@ -40,6 +60,9 @@ const Container = styled.div`
     align-items: center;
     flex-direction: column;
     min-width: 40vw;
+    animation: ${Appear} 5s linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
     h1 {
       font-family: ${themeTypography.fontFamily};
     }
@@ -52,6 +75,8 @@ const Container = styled.div`
       height: 90%;
       object-fit: contain;
       object-position: center;
+      filter: drop-shadow(2px 4px 6px black);
+      // filter: drop-shadow(0 0 10px rgba(0, 0, 0 0.8));
       @media (max-width: 920px) {
         width: 80%;
         height: 80%;
@@ -66,6 +91,9 @@ const Container = styled.div`
 `;
 
 export default function Landing() {
+
+  const { t } = useTranslation();
+
   const menuItems = [
     { path: "#home", label: "Home" },
     { path: "#history", label: "History" },
@@ -88,17 +116,10 @@ export default function Landing() {
   return (
     <>
       <NavBar menuItems={menuItems} theme="ligth"></NavBar>
-
       <Container id="home">
         <div>
-          <h1>¿Qué es Swapify?</h1>
-          <p>
-            Swapify es una plataforma innovadora que permite a los usuarios
-            intercambiar, transferir y gestionar activos digitales de manera
-            rápida y segura. Nuestra misión es simplificar las transacciones
-            digitales, ofreciendo una solución accesible y confiable para
-            individuos y empresas.
-          </p>
+          <h1>{t("home")}</h1>
+          <p>{t("homeDescription")}</p>
         </div>
         <div>
           <img src="src/assets/images/test.png" alt="" />
@@ -107,15 +128,8 @@ export default function Landing() {
 
       <Container id="history">
         <div>
-          <h1>Nuestra Historia</h1>
-          <p>
-            Swapify comenzó con la visión de transformar la forma en que las
-            personas realizan transacciones digitales. Desde nuestros humildes
-            inicios en 2024, hemos crecido hasta convertirnos en una plataforma
-            confiable para miles de usuarios. Nuestro compromiso ha sido siempre
-            garantizar transacciones rápidas, seguras y eficientes,
-            proporcionando soluciones innovadoras a nuestros clientes.
-          </p>
+          <h1>{t("history")}</h1>
+          <p>{t("historyDescription")}</p>
           {/* <h1>¿Cómo funciona?</h1>
           <p>
             Con Swapify, puedes realizar intercambios de activos digitales en
@@ -131,21 +145,17 @@ export default function Landing() {
 
       <Container id="contact-us">
         <div className="flex-column">
-          <h1>¿Tienes preguntas? ¡Contáctanos!</h1>
-          <p>
-            Nuestro equipo está aquí para ayudarte. No dudes en comunicarte con
-            nosotros si tienes alguna consulta o necesitas asistencia. Estamos
-            disponibles las 24 horas del día, los 7 días de la semana.
-          </p>
+          <h1>{t("contactTitle")}</h1>
+          <p>{t("contactDescription")}</p>
           <ContactForm />
         </div>
       </Container>
 
       <Container id="faqs">
         <div className="flex-column">
-          <h1>Preguntas Frecuentes</h1>
+          <h1>{t("faqs")}</h1>
           {/* <Tabs tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} /> */}
-          <Tabs 
+          <Tabs
             tabs={tabsItems}
             activeTab={activeTab}
             setActiveTab={setActiveTab}

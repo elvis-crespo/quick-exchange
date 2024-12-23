@@ -4,7 +4,9 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "./utils/themes";
+import { I18nextProvider } from "react-i18next";
 import React, { Suspense } from "react";
+import i18n from "./utils/i18n";
 
 // Lazy loaded components
 const Landing = React.lazy(() => import("./Pages/Landing"));
@@ -19,22 +21,24 @@ function App() {
   const theme = useSelector((state) => state.theme.theme); // dark or light string
 
   return (
-    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading... ❤️</div>}>
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Landing />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/login" element={<Login />} />
-            <Route element={<ProtectedRoute isAllowed={false} />}>
-              <Route path="/home" element={<Home />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </ThemeProvider>
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading... ❤️</div>}>
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<Landing />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/login" element={<Login />} />
+              <Route element={<ProtectedRoute isAllowed={false} />}>
+                <Route path="/home" element={<Home />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }
 

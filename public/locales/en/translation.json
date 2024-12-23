@@ -1,0 +1,21 @@
+{
+  "welcome": "Welcome to Swapify",
+  "description": "Swapify is an innovative platform that allows users to exchange, transfer, and manage digital assets quickly and securely.",
+  "home": "Welcome to Swapify",
+  "homeDescription": "Swapify is an innovative platform that allows users to exchange, transfer, and manage digital assets quickly and securely. Our mission is to simplify digital transactions, offering an accessible and reliable solution for individuals and businesses.",
+  "history": "Our History",
+  "contactUs": "Contact Us",
+  "faqs": "FAQs",
+  "general": "General",
+  "security": "Security",
+  "transactions": "Transactions",
+  "historyDescription": "Swapify started with a vision to transform the way people transact digitally. From our humble beginnings in 2024, we have grown to become a trusted platform for thousands of users. Our commitment has always been to ensure fast, secure and efficient transactions, while providing innovative solutions to our customers.",
+  "contactTitle": "Do you have questions? Contact us!",
+  "contactDescription": "Our team is here to help you. Feel free to reach out to us if you have any questions or need assistance. We are available 24/7.",
+  "whatIsSwapify": "What is Swapify?",
+  "swapifyDescription": "Swapify is an innovative platform for digital assets.",
+  "isSwapifySafe": "Is it safe to use Swapify?",
+  "swapifySafetyDescription": "Yes, Swapify uses advanced encryption technology.",
+  "transactionTime": "How long does a transaction take?",
+  "transactionTimeDescription": "Transactions are usually completed within minutes."
+}
