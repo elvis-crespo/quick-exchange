@@ -17,5 +17,64 @@
   "isSwapifySafe": "Is it safe to use Swapify?",
   "swapifySafetyDescription": "Yes, Swapify uses advanced encryption technology.",
   "transactionTime": "How long does a transaction take?",
-  "transactionTimeDescription": "Transactions are usually completed within minutes."
+  "transactionTimeDescription": "Transactions are usually completed within minutes.",
+ 
+  "faqs1": {
+    "general": {
+      "whatIsSwapify": {
+        "question": "What is Swapify?",
+        "answer": "Swapify is an innovative platform that allows users to exchange, transfer, and manage digital assets quickly and securely."
+      },
+      "howDoesSwapifyWork": {
+        "question": "How does Swapify work?",
+        "answer": "Swapify enables users to create accounts, link digital wallets, and perform secure transactions using advanced blockchain technology."
+      }
+    },
+    "security": {
+      "isSwapifySafe": {
+        "question": "Is it safe to use Swapify?",
+        "answer": "Yes, Swapify uses advanced encryption technology to protect all transactions and user data."
+      },
+      "howIsMyDataProtected": {
+        "question": "How is my data protected?",
+        "answer": "Swapify follows industry-standard security protocols, including end-to-end encryption and multi-factor authentication."
+      }
+    },
+    "transactions": {
+      "transactionTime": {
+        "question": "How long does a transaction take?",
+        "answer": "Transactions are usually completed within minutes, depending on the network's traffic."
+      },
+      "transactionFees": {
+        "question": "Are there any fees for transactions?",
+        "answer": "Yes, Swapify applies minimal fees to ensure smooth and efficient transaction processing."
+      }
+    },
+    "account": {
+      "howToCreateAccount": {
+        "question": "How do I create an account on Swapify?",
+        "answer": "Click on 'Sign Up,' provide your details, verify your email, and you're all set!"
+      },
+      "accountIssues": {
+        "question": "What should I do if I encounter issues with my account?",
+        "answer": "Contact our support team, available 24/7, for assistance with any account-related problems."
+      }
+    }
+  },
+
+
+  "menu": {
+    "home": "Home",
+    "history": "History",
+    "contactUs": "Contact Us",
+    "faqs": "FAQs"
+  },
+
+  
+  "menuFaq": {
+    "general": "General",
+    "security": "Security",
+    "transactions": "Transactions",
+    "account": "Account"
+  }
 }

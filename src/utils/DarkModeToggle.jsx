@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-const Toggle = styled.label`
+export const Toggle = styled.label`
   position: absolute;
-  // left: 800pxs;
-  right: 170px;
+  // right: 170px;
+  right: ${({ customRight }) => customRight || "170px"};
   background-color: #fff;
   width: 32px;
   height: 32px;

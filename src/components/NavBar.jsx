@@ -4,9 +4,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { toggleTheme } from "../redux/themeReducer";
 import { useDispatch, useSelector } from "react-redux";
-import DarkModeToggle from "../utils/DarkModeToggle";
+import DarkModeToggle, { Toggle } from "../utils/DarkModeToggle";
 import { themeTypography } from "../utils/themes";
 import { Logo } from "../assets/images/Logo";
+import i18n from "../utils/i18n";
+import { Language, ToggleIcon } from "./Icons/Icons";
+import { useTranslation } from "react-i18next";
 
 const Container = styled.div`
   position: sticky;
@@ -124,11 +127,6 @@ const ToggleBtn = styled.div`
   font-size: 24px;
   cursor: pointer;
 
-  svg {
-    path {
-    }
-  }
-
   @media (max-width: 920px) {
     display: block;
   }
@@ -171,18 +169,28 @@ const DropDownMenu = styled.div`
 `;
 
 export const NavBar = ({ menuItems }) => {
+  
   const [isOpen, setIsOpen] = useState(false);
-  // const themeState = useSelector((state) => state.theme);
+  const theme = useSelector((state) => state.theme.theme);
+  
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const handleClickChangeLanguage = () => {
+  //   const newLanguage = i18n.language === "en" ? "es" : "en";
+  //   i18n.changeLanguage(newLanguage);
+  //   console.log(newLanguage);
+  // }  
   const handleClickLogin = (e) => {
     e.preventDefault();
     navigate("/login");
   };
-
-  const listItem = document.querySelectorAll("li");
+  
+  
   const menuBackdrop = document.querySelector("#menu-backdrop");
+  const listItem = document.querySelectorAll("li");
 
   listItem.forEach((item) => {
     
@@ -205,7 +213,6 @@ export const NavBar = ({ menuItems }) => {
 
   });
 
-  const theme = useSelector((state) => state.theme.theme);
   return (
     <Container>
       <nav>
@@ -215,7 +222,7 @@ export const NavBar = ({ menuItems }) => {
           {menuItems.map((item) => (
             <li key={item.path}>
               {/* <NavLink to={item.path}>{item.label}</NavLink> */}
-              <a href={item.path}>{item.label}</a>
+              <a href={item.path}>{t(item.label)}</a>
             </li>
           ))}
         </ul>
@@ -232,26 +239,15 @@ export const NavBar = ({ menuItems }) => {
         </a>
 
         <ToggleBtn onClick={() => setIsOpen(!isOpen)}>
-          <svg
-            className="open"
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 512 512"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              className="path_selector"
-              d={
-                isOpen
-                  ? "M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
-                  : "M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"
-              }
-            ></path>
-          </svg>
+          <ToggleIcon/>
         </ToggleBtn>
+
+        <Toggle customRight="100px" style={{ boxShadow: "none", backgroundColor: "transparent" }}>
+          <Language 
+            onClick={() => i18n.changeLanguage(i18n.language === "en" ? "es" : "en")} 
+            currentColor={theme === "dark" ? "#fff" : "#000"}
+          />
+        </Toggle>
       </nav>
 
       <DropDownMenu dataisopen={isOpen}>

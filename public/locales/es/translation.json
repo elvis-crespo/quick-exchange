@@ -1,7 +1,6 @@
 {
   "welcome": "Bienvenido a Swapify",
   "description": "Swapify es una plataforma innovadora que permite a los usuarios intercambiar, transferir y gestionar activos digitales de manera rápida y segura.",
-            
 
   "home": "Bienvenido a Swapify",
   "homeDescription": "Swapify es una plataforma innovadora que permite a los usuarios intercambiar, transferir y gestionar activos digitales de manera  rápida y segura. Nuestra misión es simplificar las transacciones digitales, ofreciendo una solución accesible y confiable paraindividuos y empresas.",
@@ -20,5 +19,68 @@
   "isSwapifySafe": "¿Es seguro utilizar Swapify?",
   "swapifySafetyDescription": "Sí, Swapify utiliza tecnología de cifrado avanzada.",
   "transactionTime": "¿Cuánto tiempo tarda una transacción?",
-  "transactionTimeDescription": "Las transacciones suelen completarse en minutos."
+  "transactionTimeDescription": "Las transacciones suelen completarse en minutos.",
+  
+  "faqs1": {
+    "general": {
+      "whatIsSwapify": {
+        "question": "¿Qué es Swapify?",
+        "answer": "Swapify es una plataforma innovadora que permite a los usuarios intercambiar, transferir y gestionar activos digitales de manera rápida y segura."
+      },
+      "howDoesSwapifyWork": {
+        "question": "¿Cómo funciona Swapify?",
+        "answer": "Swapify permite a los usuarios crear cuentas, vincular billeteras digitales y realizar transacciones seguras utilizando tecnología avanzada de blockchain."
+      }
+    },
+    "security": {
+      "isSwapifySafe": {
+        "question": "¿Es seguro usar Swapify?",
+        "answer": "Sí, Swapify utiliza tecnología de cifrado avanzada para proteger todas las transacciones y datos de los usuarios."
+      },
+      "howIsMyDataProtected": {
+        "question": "¿Cómo se protegen mis datos?",
+        "answer": "Swapify sigue protocolos de seguridad estándar en la industria, incluyendo cifrado de extremo a extremo y autenticación multifactor."
+      }
+    },
+    "transactions": {
+      "transactionTime": {
+        "question": "¿Cuánto tiempo tarda una transacción?",
+        "answer": "Las transacciones generalmente se completan en minutos, dependiendo del tráfico de la red."
+      },
+      "transactionFees": {
+        "question": "¿Hay tarifas para las transacciones?",
+        "answer": "Sí, Swapify aplica tarifas mínimas para garantizar un procesamiento de transacciones fluido y eficiente."
+      }
+    },
+    "account": {
+      "howToCreateAccount": {
+        "question": "¿Cómo creo una cuenta en Swapify?",
+        "answer": "Haz clic en 'Regístrate,' proporciona tus datos, verifica tu correo electrónico, ¡y listo!"
+      },
+      "accountIssues": {
+        "question": "¿Qué debo hacer si tengo problemas con mi cuenta?",
+        "answer": "Contacta a nuestro equipo de soporte, disponible las 24 horas del día, los 7 días de la semana, para asistencia con cualquier problema relacionado con tu cuenta."
+      }
+    }
+  },
+
+
+  "menu": {
+    "home": "Inicio",
+    "history": "Historia",
+    "contactUs": "Contáctanos",
+    "faqs": "Preguntas Frecuentes"
+  },
+
+
+  "menuFaq": {
+    "general": "General",
+    "security": "Seguridad",
+    "transactions": "Transacciones",
+    "account": "Cuenta"
+  }
+
+ 
 }
+
+

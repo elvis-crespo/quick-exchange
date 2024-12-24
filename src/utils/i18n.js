@@ -8,25 +8,13 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: "es",
     debug: true,
     interpolation: {
       escapeValue: false, // React already does escaping
     },
-    backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
-    },
-    // resources: {
-    //   en: {
-    //     translation: {
-    //       "Welcome to React": "Welcome to React and react-i18next",
-    //     },
-    //   },
-    //   es: {
-    //     translation: {
-    //       "Welcome to React": "Bienvenido a React y react-i18next",
-    //     },
-    //   },
+    // backend: {
+    //   loadPath: "/locales/{{lng}}/{{ns}}.json",
     // },
   });
 

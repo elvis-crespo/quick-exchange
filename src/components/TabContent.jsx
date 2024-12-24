@@ -12,7 +12,9 @@ const TabContentContainer = styled.div`
   display: ${({ hidden }) => (hidden ? "none" : "block")} !important;
   min-width: 80vw !important;
   padding: 2rem 1.5rem;
-  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 80vw !important;
 
   .faqs-text {
     font-family: ${themeTypography.fontFamily};

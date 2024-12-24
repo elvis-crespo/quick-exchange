@@ -69,6 +69,13 @@ const Container = styled.div`
     p {
       padding: 32px 119px;
       font-family: ${themeTypography.fontFamily};
+      @media (max-width: 920px) {
+        padding: 3rem 2.5rem;
+        }
+        
+        @media (max-width: 570px) {
+          padding: 2rem 1.5rem;
+      }
     }
     img {
       width: 90%;
@@ -95,16 +102,17 @@ export default function Landing() {
   const { t } = useTranslation();
 
   const menuItems = [
-    { path: "#home", label: "Home" },
-    { path: "#history", label: "History" },
-    { path: "#contact-us", label: "Contact Us" },
-    { path: "#faqs", label: "FAQs" },
+    { path: "#home", label: "menu.home" },
+    { path: "#history", label: "menu.history" },
+    { path: "#contact-us", label: "menu.contactUs" },
+    { path: "#faqs", label: "menu.faqs" },
   ];
 
   const tabsItems = [
-    { id: "tab1", title: "General" },
-    { id: "tab2", title: "Seguridad" },
-    { id: "tab3", title: "Transacciones" },
+    { id: "tab1", title: "menuFaq.general" },
+    { id: "tab2", title: "menuFaq.security" },
+    { id: "tab3", title: "menuFaq.transactions" },
+    { id: "tab4", title: "menuFaq.account" },
   ];
 
   const [activeTab, setActiveTab] = useState("tab1");
@@ -162,23 +170,71 @@ export default function Landing() {
           />
           <TabContent id="tab1" activeTab={activeTab}>
             <p className="faqs-text">
-              <strong>¿Qué es Swapify?</strong>
+              <strong>{t("faqs1.general.whatIsSwapify.question")}</strong>
               <br />
-              Swapify es una plataforma innovadora para activos digitales.
+              {t("faqs1.general.whatIsSwapify.answer")}
+            </p>
+          </TabContent>
+          <TabContent id="tab1" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>{t("faqs1.general.howDoesSwapifyWork.question")}</strong>
+              <br />
+              {t("faqs1.general.howDoesSwapifyWork.answer")}
+            </p>
+          </TabContent>
+
+          <TabContent id="tab2" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>{t("faqs1.security.isSwapifySafe.question")}</strong>
+              <br />
+              {t("faqs1.security.isSwapifySafe.answer")}
             </p>
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
             <p className="faqs-text">
-              <strong>¿Es seguro utilizar Swapify?</strong>
+              <strong>
+                {t("faqs1.security.howIsMyDataProtected.question")}
+              </strong>
               <br />
-              Sí, Swapify utiliza tecnología de cifrado avanzada.
+              {t("faqs1.security.howIsMyDataProtected.answer")}
+            </p>
+          </TabContent>
+
+          <TabContent id="tab3" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>
+                {t("faqs1.transactions.transactionTime.question")}
+              </strong>
+              <br />
+              {t("faqs1.transactions.transactionTime.answer")}
             </p>
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
             <p className="faqs-text">
-              <strong>¿Cuánto tiempo tarda una transacción?</strong>
+              <strong>
+                {t("faqs1.transactions.transactionFees.question")}
+              </strong>
               <br />
-              Las transacciones suelen completarse en minutos.
+              {t("faqs1.transactions.transactionFees.answer")}
+            </p>
+          </TabContent>
+
+          <TabContent id="tab4" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>
+                {t("faqs1.account.howToCreateAccount.question")}
+              </strong>
+              <br />
+              {t("faqs1.account.howToCreateAccount.answer")}
+            </p>
+          </TabContent>
+          <TabContent id="tab4" activeTab={activeTab}>
+            <p className="faqs-text">
+              <strong>
+                {t("faqs1.account.accountIssues.question")}
+              </strong>
+              <br />
+              {t("faqs1.account.accountIssues.answer")}
             </p>
           </TabContent>
         </div>
