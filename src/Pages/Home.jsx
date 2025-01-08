@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import { themeTypography } from "../utils/themes";
+import { useEffect } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -57,6 +58,23 @@ export default function Home() {
     { path: "#contact-us", label: "Contact Us" },
     { path: "#", label: "FAQs" },
   ];
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get("accessToken");
+    const idToken = urlParams.get("idToken");
+
+    if (accessToken && idToken) {
+      sessionStorage.setItem("accessToken", accessToken);
+      sessionStorage.setItem("idToken", idToken);
+
+      // Limpiar la URL
+      const cleanUrl = `${window.location.origin}${window.location.pathname}`;
+      window.history.replaceState(null, "", cleanUrl);
+    }
+
+
+  }, []);
   return (
     <>
       <>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { themeTypography } from "../utils/themes";
+import { useTranslation } from "react-i18next";
 
 const FooterContainer = styled.footer`
   // border-top: 1px solid #d2d2d2;
@@ -21,11 +22,14 @@ const FooterContainer = styled.footer`
   }
 `;
 export const Footer = () => {
+
+  const { t} = useTranslation();
   return (
     <>
       <FooterContainer>
         <nav>
-        <p>&copy; 2024 Swapify. Todos los derechos reservados.</p>
+          <p>{t("textFooter")}</p>
+          {/* <p>&copy; 2024 Swapify. Todos los derechos reservados.</p> */}
         </nav>
       </FooterContainer>
     </>

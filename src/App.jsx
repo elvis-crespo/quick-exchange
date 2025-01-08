@@ -31,7 +31,7 @@ function App() {
               <Route path="/history" element={<History />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/login" element={<Login />} />
-              <Route element={<ProtectedRoute isAllowed={false} />}>
+              <Route element={<ProtectedRoute isAllowed={true} />}>
                 <Route path="/home" element={<Home />} />
               </Route>
             </Routes>

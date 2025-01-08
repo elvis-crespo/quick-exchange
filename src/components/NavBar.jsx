@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { toggleTheme } from "../redux/themeReducer";
@@ -10,6 +10,8 @@ import { Logo } from "../assets/images/Logo";
 import i18n from "../utils/i18n";
 import { Language, ToggleIcon } from "./Icons/Icons";
 import { useTranslation } from "react-i18next";
+import { jwtDecode } from "jwt-decode";
+import UserDropdown from "./UserDropdown";
 
 const Container = styled.div`
   position: sticky;
@@ -20,17 +22,15 @@ const Container = styled.div`
   width: 100%;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+
   nav {
     background-color: ${({ theme }) => theme.navBackground};
-    // border-bottom: 1px solid #d2d2d2;
     width: 100%;
     height: 60px;
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // padding: 0 auto;
     div.logo {
       a {
         text-decoration: none;
@@ -47,6 +47,7 @@ const Container = styled.div`
         }
       }
     }
+
     ul {
       display: flex;
       gap: 30px;
@@ -72,6 +73,12 @@ const Container = styled.div`
         display: none;
       }
     }
+    .end-nav {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
     .menu-backdrop {
       position: absolute;
       background-color: #eab308;
@@ -106,7 +113,7 @@ const Container = styled.div`
       font-family: ${themeTypography.fontFamily};
 
       &:hover {
-        scale: 1.05; 
+        scale: 1.05;
         // color: white;
       }
 
@@ -169,31 +176,48 @@ const DropDownMenu = styled.div`
 `;
 
 export const NavBar = ({ menuItems }) => {
-  
   const [isOpen, setIsOpen] = useState(false);
+  const [userInf, setUserInf] = useState([]);
+
+  //Themne
   const theme = useSelector((state) => state.theme.theme);
-  
+
+  //i18n
   const { t } = useTranslation();
 
+  //redux
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleClickChangeLanguage = () => {
-  //   const newLanguage = i18n.language === "en" ? "es" : "en";
-  //   i18n.changeLanguage(newLanguage);
-  //   console.log(newLanguage);
-  // }  
+  // Obtener el token y decodificarlo
+  useEffect(() => {
+    const token = sessionStorage.getItem("idToken");
+    if (token) {
+      const userInfo = jwtDecode(token);
+      setUserInf(userInfo);
+      console.log("userInfo", userInfo);
+    }
+  }, []);
+
+  //Click event handler for login
   const handleClickLogin = (e) => {
     e.preventDefault();
     navigate("/login");
   };
-  
-  
+
+  //Click event handler for logout
+  const handleClickLogout = () => {
+    sessionStorage.removeItem("idToken");
+    sessionStorage.removeItem("accessToken");
+    navigate("/");
+  };
+
+
+  //Menu backdrop-animation
   const menuBackdrop = document.querySelector("#menu-backdrop");
   const listItem = document.querySelectorAll("li");
 
   listItem.forEach((item) => {
-    
     item.addEventListener("mouseenter", () => {
       const { left, top, width, height } = item.getBoundingClientRect();
       console.log(left, top, width, height);
@@ -210,45 +234,65 @@ export const NavBar = ({ menuItems }) => {
       menuBackdrop.style.opacity = 0;
       menuBackdrop.style.visibility = "hidden";
     });
-
   });
 
   return (
     <Container>
       <nav>
-        <Logo />
+        <div>
+          <Logo />
+        </div>
 
-        <ul>
-          {menuItems.map((item) => (
-            <li key={item.path}>
-              {/* <NavLink to={item.path}>{item.label}</NavLink> */}
-              <a href={item.path}>{t(item.label)}</a>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                {/* <NavLink to={item.path}>{item.label}</NavLink> */}
+                <a href={item.path}>{t(item.label)}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div id="menu-backdrop" className="menu-backdrop"></div>
 
-        <DarkModeToggle
-          isDarkMode={theme === "dark" ? true : false}
-          onToggle={() => dispatch(toggleTheme())}
-        />
+        <div className="end-nav">
+          <DarkModeToggle
+            isDarkMode={theme === "dark" ? true : false}
+            onToggle={() => dispatch(toggleTheme())}
+          />
 
-        <a className="action_btn" onClick={handleClickLogin}>
-          Login
-        </a>
+          <Toggle
+            customRight="100px"
+            style={{ boxShadow: "none", backgroundColor: "transparent" }}
+          >
+            <Language
+              onClick={() =>
+                i18n.changeLanguage(i18n.language === "en" ? "es" : "en")
+              }
+              currentColor={theme === "dark" ? "#fff" : "#000"}
+            />
+          </Toggle>
+
+          {!userInf ? (
+            <a className="action_btn" onClick={handleClickLogin}>
+              Login
+            </a>
+          ) : (
+            <UserDropdown
+              userInf={userInf}
+              handleClickLogout={handleClickLogout}
+            />
+          )}
+        </div>
 
         <ToggleBtn onClick={() => setIsOpen(!isOpen)}>
-          <ToggleIcon/>
+          <ToggleIcon />
         </ToggleBtn>
-
-        <Toggle customRight="100px" style={{ boxShadow: "none", backgroundColor: "transparent" }}>
-          <Language 
-            onClick={() => i18n.changeLanguage(i18n.language === "en" ? "es" : "en")} 
-            currentColor={theme === "dark" ? "#fff" : "#000"}
-          />
-        </Toggle>
       </nav>
+
+
+
 
       <DropDownMenu dataisopen={isOpen}>
         <li>

@@ -4,16 +4,20 @@
 
   "home": "Bienvenido a Swapify",
   "homeDescription": "Swapify es una plataforma innovadora que permite a los usuarios intercambiar, transferir y gestionar activos digitales de manera  rápida y segura. Nuestra misión es simplificar las transacciones digitales, ofreciendo una solución accesible y confiable paraindividuos y empresas.",
+  
   "history": "Nuestra Historia",
   "contactUs": "Contáctanos",
   "faqs": "Preguntas Frecuentes",
   "general": "General",
   "security": "Seguridad",
   "transactions": "Transacciones",
+  
   "ourHistory": "Nuestra Historia",
   "historyDescription": "Swapify comenzó con la visión de transformar la forma en que las personas realizan transacciones digitales. Desde nuestros humildes inicios en 2024, hemos crecido hasta convertirnos en una plataforma confiable para miles de usuarios. Nuestro compromiso ha sido siempre garantizar transacciones rápidas, seguras y eficientes, proporcionando soluciones innovadoras a nuestros clientes.",
+  
   "contactTitle": "¿Tienes preguntas? ¡Contáctanos!",
   "contactDescription": "Nuestro equipo está aquí para ayudarte. No dudes en comunicarte con nosotros si tienes alguna consulta o necesitas asistencia. Estamos disponibles las 24 horas del día, los 7 días de la semana.",
+  
   "whatIsSwapify": "¿Qué es Swapify?",
   "swapifyDescription": "Swapify es una plataforma innovadora para activos digitales.",
   "isSwapifySafe": "¿Es seguro utilizar Swapify?",
@@ -78,7 +82,9 @@
     "security": "Seguridad",
     "transactions": "Transacciones",
     "account": "Cuenta"
-  }
+  },
+
+  "textFooter": "Swapify © 2024. Todos los derechos reservados."
 
  
 }

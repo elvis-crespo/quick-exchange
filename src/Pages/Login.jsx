@@ -142,20 +142,23 @@ export default function Login() {
   
   const handleLoginGoogle = async () => {
     try {
-      const response = await axios.get(
-        "https://localhost:7275/api/Auth/google-login"
+          const response = await axios.get(
+        "https://localhost:7273/api/auth/google-login"
       );
-      console.log(response);
-      //url redirect
-      window.location.href = response.data.url;
+      window.location.href = response.data.message;
+      // window.location.replaceState({}, document.title, "/home");
     } catch (error) {
       console.error("Error when signing in with Google:", error);
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+  };
+
   return (
     <>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <div className="flex-column">
           <label>Email</label>
         </div>
@@ -215,7 +218,7 @@ export default function Login() {
         <p className="p line">Or With</p>
 
         <div className="flex-row">
-          <button className="btn google" onClick={handleLoginGoogle}>
+          <button className="btn google" onClick={handleLoginGoogle} type="button">
             <FcGoogle height={20} width={20} className="icon-google" />
             Google
           </button>

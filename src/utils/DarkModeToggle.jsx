@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const Toggle = styled.label`
-  position: absolute;
+  // position: absolute;
   // right: 170px;
   right: ${({ customRight }) => customRight || "170px"};
   background-color: #fff;
